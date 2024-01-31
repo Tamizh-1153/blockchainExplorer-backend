@@ -1,6 +1,16 @@
 1.Title - Blockchain Explorer(MERN stack)
 
-2.Technologies used- MongoDb, ExpressJs, ReactJs, NodeJs, Tanstack query/React query, Redux toolkit, Axios, Moment, Moralis, JWT, Mantine for UI
+2.Technologies used
+  -MongoDb
+  -ExpressJs 
+  -ReactJs
+  -NodeJs
+  -Tanstack query/React query
+  -Redux toolkit
+  -Axios, Moment
+  -Moralis
+  -JWT
+  -Mantine for UI
 
 3.Steps to build the project
   - Creating frontend using React and backend using Express and mongoDb
