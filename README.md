@@ -23,5 +23,5 @@
     https://drive.google.com/file/d/12m1KPy1A7VEYkiV-6e0-ZkXoXYVZFdJU/view?usp=drive_link
 
 5.Public hosted link
-    Frontend deployed link - https://blockchain-explorer-tm.netlify.app
-    Backend deployed link - https://blockchain-explorer-tm.onrender.com
+    1)Frontend deployed link - https://blockchain-explorer-tm.netlify.app
+    2)Backend deployed link - https://blockchain-explorer-tm.onrender.com
