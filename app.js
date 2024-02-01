@@ -25,15 +25,15 @@ app.get("/", (req, res) => {
   res.send("Blockchain Explorer website backend")
 })
 
-app.post('/webhook',async(req,res)=>{
-  const {body} = req
-  try {
-    console.log(body)
-    res.json('hi')
-  } catch (error) {
-    res.json(error.message)
-  }
-})
+// app.post('/webhook',async(req,res)=>{
+//   const {body} = req
+//   try {
+//     console.log(body)
+//     res.json('hi')
+//   } catch (error) {
+//     res.json(error.message)
+//   }
+// })
 
 const start =async() => {
 try {
@@ -55,17 +55,17 @@ const startMoralis = async() => {
 }
 startMoralis()
 
-const streams = async()=>{
-  const response = await Moralis.Streams.add({
-    webhookUrl: "https://blockchain-explorer-tm.onrender.com/webhook", // replace with your own webhook URL
-    description: "My first stream",
-    tag: "my_stream",
-    chains: ["0x1"],
-    includeNativeTxs: true,
-  })
-  console.log(response.toJSON().id)
+// const streams = async()=>{
+//   const response = await Moralis.Streams.add({
+//     webhookUrl: "https://blockchain-explorer-tm.onrender.com/webhook", // replace with your own webhook URL
+//     description: "My first stream",
+//     tag: "my_stream",
+//     chains: ["0x1"],
+//     includeNativeTxs: true,
+//   })
+//   console.log(response.toJSON().id)
   
-}
-streams()
+// }
+// streams()
 
 

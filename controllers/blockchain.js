@@ -74,19 +74,19 @@ const getTransactionByHash =async(req,res) => {
 }
 
 
-const liveTransaction = async(req, res) => {
+// const liveTransaction = async(req, res) => {
   
-  const {body} = req
-  try {
-    console.log(body)
-    res.json('hi')
-  } catch (error) {
-    console.log(error.message);
-  }
-}
+//   const {body} = req
+//   try {
+//     console.log(body)
+//     res.json('hi')
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }
 
 module.exports = {
   getWalletDetails,
   getTransactionByHash,
-  liveTransaction
+  // liveTransaction
 }
