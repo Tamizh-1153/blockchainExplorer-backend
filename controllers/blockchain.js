@@ -73,7 +73,20 @@ const getTransactionByHash =async(req,res) => {
     res.json(transaction.raw)
 }
 
+
+const liveTransaction = async(req, res) => {
+  
+  const {body} = req
+  try {
+    console.log(body)
+    res.json('hi')
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
 module.exports = {
   getWalletDetails,
-  getTransactionByHash
+  getTransactionByHash,
+  liveTransaction
 }
