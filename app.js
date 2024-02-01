@@ -51,19 +51,19 @@ const startMoralis = async() => {
     apiKey: MORALIS_API_KEY,
   })
 
-const response = await Moralis.Streams.add({
-  webhookUrl: "https://blockchain-explorer-tm.onrender.com/webhook", // replace with your own webhook URL
-  description: "My first stream",
-  tag: "my_stream",
-  chains: ["0x1"],
-  includeNativeTxs: true,
-})
-console.log(response.toJSON().id)
-  
+
 }
 startMoralis()
 
 const streams = async()=>{
+  const response = await Moralis.Streams.add({
+    webhookUrl: "https://blockchain-explorer-tm.onrender.com/webhook", // replace with your own webhook URL
+    description: "My first stream",
+    tag: "my_stream",
+    chains: ["0x1"],
+    includeNativeTxs: true,
+  })
+  console.log(response.toJSON().id)
   
 }
 streams()
