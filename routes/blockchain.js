@@ -5,7 +5,7 @@ const { getWalletDetails, getTransactionByHash } = require("../controllers/block
 
 router.route("/address/:id").get(getWalletDetails)
 router.route("/hash/:id").get(getTransactionByHash)
-// router.route('/webhook').post(liveTransaction)
+
 
 
 module.exports =router

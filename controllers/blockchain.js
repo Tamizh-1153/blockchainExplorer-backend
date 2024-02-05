@@ -6,7 +6,7 @@ const getWalletDetails = async (req, res) => {
   const { id } = req.params
   try {
     const wallet = await Blockchain.findOne({ address: id })
-    console.log(wallet)
+
     if (!wallet) {
       const nativeBalance = await Moralis.EvmApi.balance.getNativeBalance({
         chain: "0x1",
@@ -34,9 +34,9 @@ const getWalletDetails = async (req, res) => {
       const nativeBal = nativeBalance.raw.balance / 10 ** 18
       const ethValue = ethPrice.raw.usdPrice * nativeBal
       const ERC20TokenBalance =
-        ERC20TokenBalanceRaw.raw[0].balance / 10 ** 18 +
+        ERC20TokenBalanceRaw.raw[0]?.balance / 10 ** 18 +
         " " +
-        ERC20TokenBalanceRaw.raw[0].symbol
+        ERC20TokenBalanceRaw.raw[0]?.symbol
 
       const wallet = await Blockchain.create({
         address: id,
@@ -62,31 +62,23 @@ const getWalletDetails = async (req, res) => {
 
 const getTransactionByHash =async(req,res) => {
     const {id}= req.params
-    console.log(id);
 
-    const transaction = await Moralis.EvmApi.transaction.getTransaction({
-      chain: "0x1",
-      transactionHash:
-        `${id}`,
-    })
-    console.log(transaction.raw);
-    res.json(transaction.raw)
+    try {
+      const transaction = await Moralis.EvmApi.transaction.getTransaction({
+        chain: "0x1",
+        transactionHash: `${id}`,
+      })
+      res.json(transaction.raw)
+    } catch (error) {
+      res.json(error.message)
+    }
+
+    
 }
 
-
-// const liveTransaction = async(req, res) => {
-  
-//   const {body} = req
-//   try {
-//     console.log(body)
-//     res.json('hi')
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// }
 
 module.exports = {
   getWalletDetails,
   getTransactionByHash,
-  // liveTransaction
+
 }

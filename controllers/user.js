@@ -1,3 +1,4 @@
+const Moralis = require("moralis").default
 const User = require("../models/user")
 var nodemailer = require("nodemailer")
 require("dotenv").config()
@@ -11,7 +12,7 @@ const register = async (req, res) => {
   }
 
   const user = await User.create({ ...req.body })
-  console.log(user);
+  console.log(user)
   res.json({ message: "Registered successfully", user: { name: user.name } })
 }
 
@@ -105,7 +106,7 @@ const getUserInfo = async (req, res) => {
   try {
     const user = await User.findOne(
       { email: email },
-      { name: 1, email: 1, favorites: 1 }
+      { name: 1, email: 1, address: 1 }
     )
     res.json({ user })
   } catch (error) {
@@ -113,12 +114,41 @@ const getUserInfo = async (req, res) => {
   }
 }
 
-
+const addAddress = async (req, res) => {
+  const { address } = req.body
+  const { email } = req.user
+  try {
+    const user = await User.findOne({ email: email })
+    if (user?.address) {
+      
+      await Moralis.Streams.deleteAddress({
+        id: `${process.env.Stream_ID}`,
+        address: user?.address,
+      })
+      console.log("Address deleted")
+    }
+    const updateUser = await User.findOneAndUpdate(
+      { email: email },
+      { address: address },
+      { new: true }
+    )
+      
+    await Moralis.Streams.addAddress({
+      id: `${process.env.Stream_ID}`,
+      address: address,
+    })
+    console.log("Address added")
+    res.json(updateUser)
+  } catch (error) {
+    res.json(error.message)
+  }
+}
 
 module.exports = {
   register,
   login,
   forgotPassword,
   resetPassword,
-  getUserInfo
+  getUserInfo,
+  addAddress,
 }
