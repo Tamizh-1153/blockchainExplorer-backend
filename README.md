@@ -18,6 +18,7 @@
   - In the backend, using moralis web3API data are retrieved such as balance,transactions.
   - These data are saved in the backend for easy retrieval and aviod too much 3rd party API calls.
   - Using React-router-dom, dynamically switch between pages to display wallet overview and transaction details.
+  - Using moralis Stream API, get the notification via email when there is new transaction.
 
 4.Google drive link of project demo
     https://drive.google.com/file/d/12m1KPy1A7VEYkiV-6e0-ZkXoXYVZFdJU/view?usp=drive_link
